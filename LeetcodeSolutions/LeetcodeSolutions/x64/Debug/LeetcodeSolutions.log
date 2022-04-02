@@ -5,6 +5,7 @@ C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(341,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(407,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(408,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(473,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(474,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(487,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(488,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(587,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   LeetcodeSolutions.vcxproj -> C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\x64\Debug\LcodeSolutions.exe

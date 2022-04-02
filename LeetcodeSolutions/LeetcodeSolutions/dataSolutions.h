@@ -446,7 +446,7 @@ public:
 	}
 	void testFunc(std::vector<int>& nums1, std::vector<int>& nums2) {
 		Solcpp cpps;
-		cpps.vctprt2(this->funcHashMap(nums1, nums2));
+		cpps.vctprt2(this->funcSort(nums1, nums2));
 	}
 private:
 	std::vector<int> funcAllin(std::vector<int>& nums1, std::vector<int>& nums2) {
@@ -459,7 +459,7 @@ private:
 		So, the question is no Solution which based on my idea?*/
 		std::vector<int> arrToReturn;
 		
-		/*
+		/*not complete
 		for (std::vector<int>::iterator ic = nums1.begin(); ic != nums2.end(); ic++) {
 			for (std::vector<int>::iterator it = nums2.begin(); it != nums2.end(); it++) {
 				if (*it == *ic) {
@@ -469,7 +469,7 @@ private:
 				}
 			}
 		}
-		*/
+
 		int numLenOfnums1 = nums1.size();
 		int numLenOfnums2 = nums2.size();
 		for (int i = 0; i < numLenOfnums1; i++) {
@@ -483,12 +483,47 @@ private:
 				icc++;
 			}
 		}
+		*/
+		int numLenOfnums1 = nums1.size();
+		int numLenOfnums2 = nums2.size();
+		if (numLenOfnums1 >= numLenOfnums2) {
+			int* numCount = new int[numLenOfnums2];
+			int numLenOfcount = 0;
+			for (auto it : nums2) {
+				
+			}
+		}
 
 		return arrToReturn;
 	}
 
 	std::vector<int> funcSort(std::vector<int>& nums1, std::vector<int>& nums2) {
+		/*
+		0ms 100%
+		9.8 66.45%
 
+		to sort first, and finding the same number by two indexs(ptr)
+		双指针法和排序
+		*/
+		int numIndexA = 0, numIndexB = 0;
+		std::vector<int> arrToReturn;
+		sort(nums1.begin(), nums1.end());
+		sort(nums2.begin(), nums2.end());
+		while (numIndexA < nums1.size() && numIndexB < nums2.size()) {
+			if (nums1[numIndexA] == nums2[numIndexB]) {
+				arrToReturn.push_back(nums1[numIndexA]);
+				numIndexA++;
+				numIndexB++;
+			}
+			else if (nums1[numIndexA] < nums2[numIndexB]) {
+				numIndexA++;
+			}
+			else {
+				numIndexB++;
+			}
+		}
+
+		return arrToReturn;
 	}
 
 	std::vector<int> funcHashMap(std::vector<int>& nums1, std::vector<int>& nums2) {
@@ -503,7 +538,9 @@ private:
 		then list vector2 named nums2, to compare the value (find the count over zero) with the recorders. 
 			if you can find one, a count in them will be reduce one
 				if the count has been zero, the number will be delete from the vector
-		hash_map just a middle value, no more role will find
+		hash_map just a middle value, no more role can be found
+
+		4ms 10MB needed
 		*/
 		if (nums1.size() > nums2.size()) {
 			return funcHashMap(nums2, nums1);
@@ -528,6 +565,111 @@ private:
 
 			return arrToRtn;
 		}
+	}
+};
+
+class Timu121Solution {
+public:
+	Timu121Solution() {
+		/*
+		you have an array, which including anything the value is, to select one smaller to buy.
+		the to select the big one to sell, just to calculate the max one - min one */
+	}
+	void funcTest(std::vector<int>& prices) {
+		int alt = this->funcMytry(prices);
+		std::cout << "number is " << alt << std::endl;
+	}
+private:
+	int funcDirect(vector<int>& prices) {
+		/*
+		with two circle, overtime
+		a failed submit.*/
+		int numSize = prices.size();
+		int numMax = INT_MIN;
+		int temp = 0;
+		for (int i = 0; i < numSize; i++) {
+			for (int j = i; j < numSize; j++) {
+				temp = prices[j] - prices[i];
+				if (numMax < temp) {
+					numMax = temp;
+				}
+			}
+		}
+		if (numMax < 0) {
+			numMax = 0;
+		}
+		return numMax;
+	}
+
+	int funcMytry(vector<int>& prices) {
+		/* complete
+		now, there a solution which time O(n) needed
+			4, 3, 4, 5, 6, 9, 1, 5, 5, 2, 6
+			3 9 2 5
+		idea: think about the array:
+			to find the smaller, recode it and collecting the profit it list by.
+			if a smaller number you can meet, then you can throw it out and write it down instead.
+				then you'd better to calculate again, but to compare the value of profit you record before. if the former is the bigger,
+					so you can make it passed, but if the former is smaller then the latter, to instead of it.
+
+		动态规划 it named.
+		96ms 81.9% againsted
+		91.1MB 64% beated.
+		*/
+		int maxProfit = 0, minNums = INT_MAX;
+		for (auto it : prices) {
+			maxProfit = max(maxProfit, it - minNums);
+			minNums = min(minNums, it);
+		}
+		return maxProfit;
+	}
+};
+
+class Timu118Solution {
+public:
+	Timu118Solution() {
+		/*
+		int numRows
+		Ci n
+		to return something like this:
+			[[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+			*/
+	}
+	void funcTest(int numRows) {
+		auto f = [&](std::vector<long> nums) {for (auto it : nums) { std::cout << it << "  "; }};
+		for (auto it : this->funcMytry(numRows)) {
+			f(it);
+			std::cout << std::endl;
+		}
+		return;
+	}
+private:
+	std::vector<std::vector<long>> funcMytry(int numRows) {
+		std::vector<std::vector<long>> arrReturn;
+		for (int i = 0; i < numRows; i++) {
+			arrReturn.push_back(this->funcMytryVectorReturn(i));
+		}
+		return arrReturn;
+	}
+	std::vector<long> funcMytryVectorReturn(int num) {
+		if (num) {
+			std::vector<long> it;
+			long sum = 1;
+			for (int i = 0; i <= num; i++) {
+				sum = this->funcMultiAI(num) / (this->funcMultiAI(i) * this->funcMultiAI(num - i));
+				it.push_back(sum);
+			}
+			return it;
+		}
+		return { 1 };
+	}
+	long funcMultiAI(int nums) {
+		//return [&] { return nums > 1 ? funcMultiAI(nums - 1) * nums : 1; };
+		if (nums > 1) {
+			return nums * funcMultiAI(nums - 1);
+		}
+		else
+			return 1;
 	}
 };
 
