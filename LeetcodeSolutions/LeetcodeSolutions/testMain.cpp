@@ -15,6 +15,12 @@ int main() {
 
 	//timu53Solution test;
 	//test.testApi53(nums2);
-	forTest::forHashmap();
+	//forTest::forHashmap();
+	
+	//Timu88Solution a;
+	//a.testFunc();
+
+	timu350Solution uer;
+	uer.testFunc(nums1,nums1);
 	return 0;
 }

@@ -184,6 +184,106 @@ private:
 	}
 };
 
+class Timu88Solution {
+public:
+	Timu88Solution() {
+		//非递减顺序 排列的数组合并到一起
+		//其中 nums1长度为m+n 合并结果由m1存储
+		/*
+		time: 03/27/2022
+		* https://www.cnblogs.com/QG-whz/p/5152963.html
+		*/
+	}
+	void testFunc() {
+		std::vector<int> nums1 = { 0,2,4,6,8,10,0,0,0,0,0 };
+		std::vector<int> nums2 = { 1,3,5,7,9 };
+		int m = 6;
+		int n = 5;
+		//this->mergerMys(nums1, m, nums2, n);
+		//this->mergerVector(nums1, m, nums2, n);
+		this->mergerFuncRefine(nums1, m, nums2, n);
+		Solcpp crt;
+		crt.vctprt1(nums1);
+	}
+private:
+	void mergerMys(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
+		/*好像这个就是双指针法..(算是未优化版吧.
+		此算法有点复杂化了 时间超过44% 4ms 空间超过17% 8.9MB
+		*/
+		int flagNums1 = 0, flagNums2 = 0;
+		std::vector<int> nums0(m);
+		for (int i = 0; i < n + m; i++) {
+			if (flagNums1 < m && flagNums2 < n) {
+				if (nums1[flagNums1] < nums2[flagNums2]) {
+					nums0[i] = nums1[flagNums1];
+					flagNums1++;
+				}
+				else {
+					nums0[i] = nums2[flagNums2];
+					flagNums2++;
+				}
+			}
+			else if (flagNums1 == m&& flagNums2 < n) {
+				nums0[i] = nums2[flagNums2];
+				flagNums2++;
+			}
+			else if (flagNums2 == n&& flagNums1 < m) {
+				nums0[i] = nums1[flagNums1];
+				flagNums1++;
+			}
+			else
+				break;
+		}
+		int c = 0;
+		for (auto i : nums0) {
+			nums1[c] = i;
+			c++;
+		}
+	}
+
+	void mergerVector(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
+		/*时间4ms 44.39% 空间8.7MB 87%*/
+		int c = 0;
+		for (int i = m; i < m + n; i++) {
+			nums1[i] = nums2[c];
+			c++;
+		}
+		sort(nums1.begin(), nums1.end());
+	}
+
+	void mergerFuncRefine(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
+		/*
+		* 未完成
+		* time: 03/27/2022
+		*/
+		int flagNums1 = 0, flagNums2 = 0;
+		int* nums = new int[m + n];
+		int i = 0;
+		while (flagNums1 < m || flagNums2 < n) {
+			if (flagNums1 == m) {
+				nums[i] = nums2[flagNums2];
+				flagNums2++;
+			}
+			else if (flagNums2 == n) {
+				nums[i] = nums1[flagNums1];
+				flagNums1++;
+			}
+			else if (nums1[flagNums1] < nums2[flagNums2]) {
+				nums[i] = nums1[flagNums1];
+				flagNums1++;
+			}
+			else {
+				nums[i] = nums2[flagNums2];
+				flagNums2++;
+			}
+		}
+		for (i = 0; i < m + n; i++) {
+			nums1[i] = nums[i];
+		}
+		delete[]nums;
+	}
+};
+
 class timu217Solution {
 public:
 	timu217Solution() {
@@ -335,6 +435,99 @@ public:
 			std::cout << "has not" << std::endl;
 		}
 		solTools.vctprt2(nums);
+	}
+};
+
+class timu350Solution {
+public:
+	timu350Solution() {
+		/*
+		get two array, the elements in the same there will be selected and to return.*/
+	}
+	void testFunc(std::vector<int>& nums1, std::vector<int>& nums2) {
+		Solcpp cpps;
+		cpps.vctprt2(this->funcHashMap(nums1, nums2));
+	}
+private:
+	std::vector<int> funcAllin(std::vector<int>& nums1, std::vector<int>& nums2) {
+		/* not completed
+		just find and no square and time impair will be considered
+		
+		error got, why?
+		the order of array related, if the order of array which you put in have a exchangement. the result of the returnning will be changed,
+		that's a damage
+		So, the question is no Solution which based on my idea?*/
+		std::vector<int> arrToReturn;
+		
+		/*
+		for (std::vector<int>::iterator ic = nums1.begin(); ic != nums2.end(); ic++) {
+			for (std::vector<int>::iterator it = nums2.begin(); it != nums2.end(); it++) {
+				if (*it == *ic) {
+					arrToReturn.insert(arrToReturn.begin(), *it);
+					nums2.erase(it);
+					break;
+				}
+			}
+		}
+		*/
+		int numLenOfnums1 = nums1.size();
+		int numLenOfnums2 = nums2.size();
+		for (int i = 0; i < numLenOfnums1; i++) {
+			std::vector<int>::iterator icc = nums2.begin();
+			for (int j = 0; j < numLenOfnums2; j++) {
+				if (nums1[i] == nums2[j]) {
+					arrToReturn.insert(arrToReturn.begin(), nums1[i]);
+					//nums2.swap(icc);
+					numLenOfnums2--;
+				}
+				icc++;
+			}
+		}
+
+		return arrToReturn;
+	}
+
+	std::vector<int> funcSort(std::vector<int>& nums1, std::vector<int>& nums2) {
+
+	}
+
+	std::vector<int> funcHashMap(std::vector<int>& nums1, std::vector<int>& nums2) {
+		/*
+		with hashmap named unordered_map, we can conservation two members of them:
+			numbers in the nums1 which had found
+			then the other one is: the count of them
+		
+		then how to use them?:
+		to list them by a for loop, the value and their count will be recorded
+		
+		then list vector2 named nums2, to compare the value (find the count over zero) with the recorders. 
+			if you can find one, a count in them will be reduce one
+				if the count has been zero, the number will be delete from the vector
+		hash_map just a middle value, no more role will find
+		*/
+		if (nums1.size() > nums2.size()) {
+			return funcHashMap(nums2, nums1);
+		}
+		else {
+			std::unordered_map<int, int> cntmap;
+			for (auto it : nums1) {
+				++cntmap[it];
+			}
+
+			std::vector<int> arrToRtn;
+			for (auto ic : nums2) {
+				if (cntmap.count(ic)) {
+					arrToRtn.push_back(ic);
+					--cntmap[ic];
+
+					if (cntmap[ic] == 0) {
+						cntmap.erase(ic);
+					}
+				}
+			}
+
+			return arrToRtn;
+		}
 	}
 };
 
