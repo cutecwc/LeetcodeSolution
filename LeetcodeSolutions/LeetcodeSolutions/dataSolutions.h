@@ -636,25 +636,36 @@ public:
 			*/
 	}
 	void funcTest(int numRows) {
-		auto f = [&](std::vector<long> nums) {for (auto it : nums) { std::cout << it << "  "; }};
-		for (auto it : this->funcMytry(numRows)) {
+		auto f = [&](std::vector<int> nums) {for (auto it : nums) { std::cout << it << "  "; }};
+
+		for (auto it : this->funcBreak(numRows)) {
 			f(it);
 			std::cout << std::endl;
 		}
+		//f(this->funcMytryVectorReturn(numRows));
+		//std::cout << this->funcMultiAI(numRows) << std::endl;
 		return;
 	}
 private:
-	std::vector<std::vector<long>> funcMytry(int numRows) {
-		std::vector<std::vector<long>> arrReturn;
+	/* not passed
+	in this solution, the fact you can get that is: although the method is right. but it's wrong in the end.
+
+	because the size of int/long is not enough to the 阶乘计算.
+	so, while i'm in 13!, 'int' or 'long' is not enough to memorize.
+		and in 25, 'long long' to be end. we can't calculate the answer by a amazing way.
+		
+		but, 杨辉三角 can be calculated by a easier way: that's addition */
+	std::vector<std::vector<int>> funcMytry(int numRows) {
+		std::vector<std::vector<int>> arrReturn;
 		for (int i = 0; i < numRows; i++) {
 			arrReturn.push_back(this->funcMytryVectorReturn(i));
 		}
 		return arrReturn;
 	}
-	std::vector<long> funcMytryVectorReturn(int num) {
+	std::vector<int> funcMytryVectorReturn(int num) {
 		if (num) {
-			std::vector<long> it;
-			long sum = 1;
+			std::vector<int> it;
+			long long sum = 1;
 			for (int i = 0; i <= num; i++) {
 				sum = this->funcMultiAI(num) / (this->funcMultiAI(i) * this->funcMultiAI(num - i));
 				it.push_back(sum);
@@ -663,13 +674,51 @@ private:
 		}
 		return { 1 };
 	}
-	long funcMultiAI(int nums) {
+	long long funcMultiAI(int nums) {
 		//return [&] { return nums > 1 ? funcMultiAI(nums - 1) * nums : 1; };
+		/*
 		if (nums > 1) {
 			return nums * funcMultiAI(nums - 1);
 		}
 		else
 			return 1;
+			*/
+		return nums > 1 ? funcMultiAI(nums - 1) * nums : 1;
+	}
+
+	std::vector<std::vector<int>> funcBreak(int numRows) {
+		/*
+			  1
+			 1 1
+			1 2 1
+		   1 3 3 1
+		  1 4 6 4 1
+		1 5 10 10 5 1
+		
+		this is my ans, which most closely to the fact.
+		动态规划&&数组
+		0ms need 100%
+		6.3MB impair 80.7% defeated
+		*/
+		int numStart = 1;
+		std::vector<std::vector<int>> arrReturn;
+		arrReturn.push_back({ 1 });
+		for (int i = 0; i < numRows - 1; i++) {
+			std::vector<int> temp;
+			temp.push_back(1);
+			numStart = 1;
+			for (int j = 1; j <= arrReturn[i].size(); j++) {
+				if (j == arrReturn[i].size()) {
+					temp.push_back(1);
+				}
+				else {
+					temp.push_back(numStart + arrReturn[i][j]);
+					numStart = arrReturn[i][j];
+				}
+			}
+			arrReturn.push_back(temp);
+		}
+		return arrReturn;
 	}
 };
 

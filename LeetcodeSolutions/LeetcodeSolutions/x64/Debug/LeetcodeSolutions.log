@@ -8,4 +8,10 @@ C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(487,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(488,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(587,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(671,18): warning C4244: “参数”: 从“__int64”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\bookLearningTest.h(246,6): warning C4091: “typedef ”: 没有声明变量时忽略“bookArraySTD::myArray”的左侧
   LeetcodeSolutions.vcxproj -> C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\x64\Debug\LcodeSolutions.exe

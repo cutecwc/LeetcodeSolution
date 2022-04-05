@@ -3,6 +3,8 @@
 
 #include"dataSolutions.h"
 
+#include"bookLearningTest.h"
+
 using namespace std;
 int main() {
 	//timu217Solution* test = new timu217Solution();
@@ -27,7 +29,19 @@ int main() {
 	//Timu121Solution a;
 	//a.funcTest(nums1);
 
-	Timu118Solution a;
-	a.funcTest(15);
+	//Timu118Solution a;
+	//a.funcTest(5);
+
+	//bookTeststd::ClassTestArrays a;
+	//a.funcTest();
+
+	//bookArraySTD::myArray myarr(6);
+	bookArraySTD::myArray myarr;
+	myarr.funcPushback(5); myarr.funcPushback(2); myarr.funcPushback(8); myarr.funcPushback(6); myarr.funcPushback(15);
+	myarr.funcPrint();
+	myarr.funcInsert(1, 6);
+	myarr.funcPrint();
+	myarr.funcInsert(100, 3);
+	myarr.funcPrint();
 	return 0;
 }

@@ -66,6 +66,35 @@ namespace forTest {
 		for_each(its.first, its.second, [](unordered_map<int, int>::value_type& x) {
 			cout << x.first << "<--±éÀú·½Ê½3-->" << x.second << endl;
 			});
+	}
+
+	void forLoopFortest() {
+		/*
+		to practice the mind of loop locating, i created this theme.*/
+		int arr[6] = { 1,4,5,12,6,24 };
+		auto forloop = [&](int* arr, int size) {
+			/*
+			a common forloop. that loop from 0 to size,
+				0 to size made by < 
+				0 to i<6
+				cross by 0,1,2,3,4,5 */
+			for (int i = 0; i < size; i++) {
+				std::cout << " " << arr[i];
+			}
+		};
+		auto forloop2 = [&](int* arr, int size) {
+			try{
+				/*
+				0 to i<=6;
+				0,1,2,3,4,5,6 */
+				for (int i = 0; i <= size; i++) {
+					std::cout << " " << arr[i];
+				}
+			}
+			catch (const std::exception&){
+				std::cout << "err: An over boundary access occured." << std::endl;
+			}
+		};
 
 	}
 }
