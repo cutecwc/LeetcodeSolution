@@ -35,7 +35,9 @@ int main() {
 	//bookTeststd::ClassTestArrays a;
 	//a.funcTest();
 
+	//--- bookArrayStd  to test myArray class funcs. not complete. ---
 	//bookArraySTD::myArray myarr(6);
+	/*
 	bookArraySTD::myArray myarr;
 	myarr.funcPushback(5); myarr.funcPushback(2); myarr.funcPushback(8); myarr.funcPushback(6); myarr.funcPushback(15);
 	myarr.funcPrint();
@@ -43,5 +45,17 @@ int main() {
 	myarr.funcPrint();
 	myarr.funcInsert(100, 3);
 	myarr.funcPrint();
+	*/
+
+	//Timu9Solution atest9;
+	//atest9.funcTest();
+
+
+	//Timu566Solution atest566;
+	//atest566.funcTest();
+
+	Timu387Solution atest387;
+	atest387.funcTest();
+
 	return 0;
 }

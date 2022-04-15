@@ -8,6 +8,8 @@
 #include<unordered_set>
 #include<unordered_map>
 
+#include<string>
+
 #include"sllts.h"
 
 class timu1Solution {
@@ -719,6 +721,221 @@ private:
 			arrReturn.push_back(temp);
 		}
 		return arrReturn;
+	}
+};
+
+class Timu9Solution {
+public:
+	Timu9Solution() {
+		/*
+		a defination like 121 1221 12321 123321 
+			to give you a number, then return true or false,
+				if true, itis, or it is not
+
+		int 4byte =32bit =(2^31)-1=2147483647
+		while unsigned int is 4byte without sign. = 2^32 -1 = 0бл4294967295
+
+
+		tips: -2^31 <= x <= 2^31 - 1
+		*/
+	}
+	void funcTest() {
+		bool c = this->funcMytry2(1000021);
+		auto f = [](bool ci) {
+			if (ci)
+				std::cout << "it is " << std::endl;
+			else
+				std::cout << " it is not " << std::endl;
+		};
+		f(c);
+		return;
+	}
+private:
+	bool funcMyconsider(const int number) {
+		/* completed 
+		-121 not is === 121 is === 10 not is
+		
+		77.4% 8ms 
+		36.43% 5.9MB */
+		if (number < 0) {
+			return false;
+		}
+		else {
+			auto fornum = [&](int num) {
+				// include<string>
+				return to_string(num);
+			};
+			/*
+			make a enforcing type switching, int to string */
+			string numstr = fornum(number);
+			int len = numstr.length();
+			for (int i = 0; i <= len / 2; i++) {
+				if (numstr[i] != numstr[len - i - 1]) {
+					return false;
+				}
+			}
+			return true;
+		}
+	}
+
+	bool funcMytry2(const int number){
+		/*
+		think that: can we use number only, without string to cut down the memory requision? 
+		1234321
+		123 --> 321*/
+		int num = number, length = 0;
+		if (num < 0) {
+			return false;
+		}
+		auto len = [](int numbers) {
+			/*
+			to get the length of a number */
+			int i = 0;
+			while (numbers) {
+				numbers = numbers / 10;
+				i++;
+			}
+			return i;
+		};
+		auto mi = [](int mis) {
+			/*
+			to return the answer of (10^mis) 
+			as mis == 1 to return 10
+				while mis == 0 to return 1; */
+			int sum = 1;
+			while (mis > 0) {
+				sum *= 10;
+				mis--;
+			}
+			return sum;
+		};
+		length = len(num);
+		int returner = 0, returneri = 0, i = length - 1;
+		for (; i > ((length % 2 == 0) ? length / 2 - 1 : length / 2); i--) {
+			int tensix = mi(i);
+			int bitNum = num / tensix;
+			returner += bitNum * mi(returneri++);
+			num -= tensix * bitNum;
+		}
+
+		length = len(num);
+		if (length != len(returner)) {
+			num = num - (num / mi(length - 1)) * mi(length - 1);
+		}
+		std::cout << num << "  " << returner << std::endl;
+		if (num == returner) {
+			return true;
+		}
+		else return false;
+	}
+};
+
+class Timu566Solution {
+public:
+	Timu566Solution() {
+		/*
+		* an interesting function in matlab is that:
+		*		a matrix m*n can be transmit into a*b, the order rely on the order in column.
+		* 
+		* vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c)
+		*/
+	}
+	void funcTest() {
+		//std::vector<std::vector<int>> mat = { {1,2,3,4},{1,2,3,5},{1,2,3,6},{1,2,3,7} };// 4*4=16
+		//std::vector<std::vector<int>> outs = this->funcMys1(mat, 8, 2);
+
+		//std::vector<std::vector<int>> mat = { {1,2},{3,4} };
+		std::vector<std::vector<int>> mat = { {1,2,3,4} };
+		std::vector<std::vector<int>> outs = this->funcMys1(mat, 2, 2);
+		Solcpp prints;
+		for (auto it : mat) {
+			prints.vctprt1(it);
+		}
+		std::cout << std::endl;
+		for (auto it : outs) {
+			prints.vctprt1(it);
+		}
+		return;
+	}
+private:
+	std::vector<std::vector<int>> funcMys1(std::vector<std::vector<int>>& mat, int r, int c) {
+		/* 
+		 pass:
+		 33% time get
+		 17% RAM usd.
+		*/
+		int lenColumn = (int)mat[0].size(), lenLine = (int)mat.size();
+		int numCount = lenColumn * lenLine;
+
+		int signalClk1 = 1, signalTop = -1;
+
+		//int numRmd = 0;
+		int numDvn = 0;// allow to locate a num in stcRtn
+		int numR = 0, numL = 0;// allow to locate a num in mat
+
+		std::vector<std::vector<int>> stcRtn;
+		if (r * c == numCount) {
+			while (signalClk1 <= numCount) {
+				//numRmd = (signalClk1 - 1) % r;
+				numDvn = (signalClk1 - 1) / c;
+
+				numL = (signalClk1 - 1) % lenColumn;
+				numR = (signalClk1 - 1) / lenColumn;
+				if (numDvn == signalTop) {
+					stcRtn[numDvn].push_back(mat[numR][numL]);
+				}
+				else {
+					std::vector<int> ns;
+					ns.push_back(mat[numR][numL]);
+					stcRtn.push_back(ns);
+					signalTop++;
+				}
+				signalClk1++;
+			}
+			return stcRtn;
+		}
+		return mat;
+	}
+};
+
+class Timu387Solution {
+	/*
+	input: s = 
+	output: 0
+	to find the first letter has no repeat.
+		to return -1 if the letter not exist.
+	*/
+public:
+	Timu387Solution() {
+
+	}
+	
+	void funcTest() {
+		string str1 = "jfoiasbjdfa";
+		string str2 = "aabbc";
+		string str3 = "";
+		int number = this->funcMytrs(str3);
+		std::cout << " loc is " << number << std::endl;
+		return;
+	}
+private:
+	int funcMytrs(string s) {
+		std::unordered_map<char,int> ert;
+		int numLen = s.length(), flag = -1;
+		auto loc = [&](string c, int len, char cnt) { for (int i = 0; i < len; i++) { if (cnt == c[i])return i; } return 0; };
+		for (int i = 0; i < numLen; i++) {
+			ert[s[i]]++;
+		}
+		char c = ' ';
+		for (auto it : ert) {
+			if (it.second == 1) {
+				c = it.first;
+				flag = 1;
+				break;
+			}
+		}
+		if (-1 == flag)return flag;
+		else return loc(s, numLen, c);
 	}
 };
 

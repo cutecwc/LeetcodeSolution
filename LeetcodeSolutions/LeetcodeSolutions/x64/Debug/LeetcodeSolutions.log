@@ -1,17 +1,20 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(LeetcodeSolutions.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
   testMain.cpp
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(36,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(144,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(341,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(407,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(408,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(487,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(488,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(587,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(671,18): warning C4244: “参数”: 从“__int64”转换到“_Ty”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(38,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(146,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(343,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(409,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(410,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(489,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(490,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(589,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(673,18): warning C4244: “参数”: 从“__int64”转换到“_Ty”，可能丢失数据
           with
           [
               _Ty=int
           ]
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(771,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(924,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\bookLearningTest.h(246,6): warning C4091: “typedef ”: 没有声明变量时忽略“bookArraySTD::myArray”的左侧
+C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\LeetcodeSolutions\dataSolutions.h(925): warning C4715: “<lambda_03d7f4d83bea99cc0142eaa47afbc981>::operator()”: 不是所有的控件路径都返回值
   LeetcodeSolutions.vcxproj -> C:\GtHuuuub\LeetcodeSolution\LeetcodeSolutions\x64\Debug\LcodeSolutions.exe
